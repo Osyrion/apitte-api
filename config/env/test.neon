@@ -14,8 +14,8 @@ nettrine.cache:
 # Parameters =================
 parameters:
 	database:
-		driver: pdo_sqlite
-		host: test
-		dbname: test
-		user: test
-		password: test
+		driver: pdo_mysql
+		host: sql11.freesqldatabase.com
+		dbname: sql11687103
+		user: sql11687103
+		password: 226XpMS9cK

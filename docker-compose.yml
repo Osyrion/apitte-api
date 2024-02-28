@@ -22,36 +22,36 @@ services:
     volumes:
       - ./:/var/www/html:cached
     depends_on:
-      - postgres
+#      - postgres
       - mariadb
     environment:
       NETTE_DEBUG: 1
       PHP_EXTENSION_XDEBUG: 1
-      PHP_EXTENSION_PGSQL: 1
-      PHP_EXTENSION_PDO_PGSQL: 1
+#      PHP_EXTENSION_PGSQL: 1
+#      PHP_EXTENSION_PDO_PGSQL: 1
       PHP_EXTENSION_MYSQLI: 1
       STARTUP_COMMAND_1: composer install
-      STARTUP_COMMAND_2: NETTE_DEBUG=1 php bin/console migrations:migrate --no-interaction
-      STARTUP_COMMAND_3: NETTE_DEBUG=1 php bin/console doctrine:fixtures:load --no-interaction
+#      STARTUP_COMMAND_2: NETTE_DEBUG=1 php bin/console migrations:migrate --no-interaction
+#      STARTUP_COMMAND_3: NETTE_DEBUG=1 php bin/console doctrine:fixtures:load --no-interaction
 
-  postgres:
-    image: dockette/postgres:13
-    environment:
-      - POSTGRES_PASSWORD=contributte
-      - POSTGRES_USER=contributte
-      - POSTGRES_DB=contributte
-    volumes:
-      - .docker/data/postgres:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+#  postgres:
+#    image: dockette/postgres:13
+#    environment:
+#      - POSTGRES_PASSWORD=contributte
+#      - POSTGRES_USER=contributte
+#      - POSTGRES_DB=contributte
+#    volumes:
+#      - .docker/data/postgres:/var/lib/postgresql/data
+#    ports:
+#      - 5432:5432
 
   mariadb:
     image: mariadb:10.4
     environment:
-      - MARIADB_ROOT_PASSWORD=contributte
-      - MARIADB_PASSWORD=contributte
-      - MARIADB_USER=contributte
-      - MARIADB_DATABASE=contributte
+      - MARIADB_ROOT_PASSWORD=226XpMS9cK
+      - MARIADB_PASSWORD=226XpMS9cK
+      - MARIADB_USER=sql11687103
+      - MARIADB_DATABASE=sql11687103
     volumes:
       - .docker/data/mysql:/var/lib/mysql
     ports:

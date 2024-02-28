@@ -38,7 +38,11 @@
     "symfony/serializer": "^7.0.3",
     "symfony/validator": "^7.0.2",
     "symfony/property-info": "^6.0.0",
-    "symfony/cache": "^7.0.0"
+    "symfony/cache": "^7.0.0",
+    "robmorgan/phinx": "^0.16.0",
+    "dibi/dibi": "^5.0",
+    "illuminate/database": "^10.46",
+    "illuminate/support": "^10.46"
   },
   "require-dev": {
     "contributte/qa": "^0.4",
