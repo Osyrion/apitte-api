@@ -1,4 +1,4 @@
-### Test API project
+# Test API project
 
 - implementácia na základe projektu: https://github.com/contributte/apitte-skeleton
 
@@ -8,12 +8,12 @@
 - schéma databázy
 - vytvorenie endpointov pre CRUD operácie
 
-# Note
+### Note
 - použitá vzdialená mysql databáza
 
-credentials:
-Host: sql11.freesqldatabase.com
-Database name: sql11687103
-Database user: sql11687103
-Database password: 226XpMS9cK
-Port number: 3306
+credentials: <br>
+<b>Host:</b> sql11.freesqldatabase.com <br>
+<b>Database name:</b> sql11687103 <br>
+<b>Database user:</b> sql11687103 <br>
+<b>Database password:</b> 226XpMS9cK <br>
+<b>Port number:</b> 3306 <br>
