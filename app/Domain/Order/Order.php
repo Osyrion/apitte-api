@@ -3,79 +3,72 @@ declare(strict_types=1);
 
 namespace App\Domain\Order;
 
-use App\Domain\Customer\Customer;
 use App\Model\Database\Entity\AbstractEntity;
+use App\Model\Database\Entity\TCreatedAt;
 use App\Model\Database\Entity\TId;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Model\Database\Entity\TUpdatedAt;
 use Doctrine\ORM\Mapping as ORM;
 
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="orders")
+ * @ORM\HasLifecycleCallbacks
+ */
 class Order extends AbstractEntity
 {
 	use TId;
+	use TCreatedAt;
+	use TUpdatedAt;
+
+	/** @ORM\Column(type="integer", nullable=FALSE, unique=false) */
+	private int $customerId;
 
 	/**
 	 * @ORM\Column(type="string")
 	 */
 	private string $orderState;
 
-	/**
-	 * @ORM\Column(type="decimal", precision=10, scale=2)
-	 */
+	/** @ORM\Column(type="float", nullable=FALSE, unique=false) */
 	private float $price;
 
-	/**
-	 * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="orders")
-	 */
-	private $products;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="App\Entity\Customer")
-	 * @ORM\JoinColumn(nullable=false)
-	 */
-	private Customer $customer;
-
-	public function __construct(string $orderState, float $price, Customer $customer)
+	public function __construct(int $customerId, string $orderState, float $price)
 	{
+		$this->customerId = $customerId;
 		$this->orderState = $orderState;
 		$this->price = $price;
-		$this->customer = $customer;
-		$this->products = new ArrayCollection();
 	}
 
-	public function getOrderState(): string
+	public function getCustomerId(): int
+	{
+		return $this->customerId;
+	}
+
+	public function setCustomerId(int $customerId): void
+	{
+		$this->customerId = $customerId;
+	}
+
+	// Getter and setter for orderState
+	public function getOrderState(): ?string
 	{
 		return $this->orderState;
 	}
 
-	public function setOrderState(string $orderState): self
+	public function setOrderState(string $orderState): void
 	{
 		$this->orderState = $orderState;
-
-		return $this;
 	}
 
-	public function getPrice(): float
+	// Getter and setter for price
+	public function getPrice(): ?float
 	{
 		return $this->price;
 	}
 
-	public function setPrice(float $price): self
+	public function setPrice(float $price): void
 	{
 		$this->price = $price;
-
-		return $this;
-	}
-
-	public function getCustomer(): Customer
-	{
-		return $this->customer;
-	}
-
-	public function setCustomer(Customer $customer): self
-	{
-		$this->customer = $customer;
-
-		return $this;
 	}
 }

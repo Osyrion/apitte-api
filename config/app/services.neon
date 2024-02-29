@@ -1,6 +1,11 @@
 # Services
 #
 services:
+	- App\Domain\Customer\CustomerService
+	- App\Domain\Product\ProductService
+	- App\Domain\Order\OrderService
+	- App\Domain\OrderProducts\OrderProductService
+
 	# Domain =================
 	- App\Domain\Api\Facade\UsersFacade
 

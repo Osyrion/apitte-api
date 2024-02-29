@@ -3,19 +3,29 @@ declare(strict_types=1);
 
 namespace App\Domain\Product;
 
+use App\Model\Database\Entity\TCreatedAt;
 use App\Model\Database\Entity\TId;
+use App\Model\Database\Entity\TUpdatedAt;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity(repositoryClass="ProductRepository")
+ * @ORM\Table(name="`products`")
+ * @ORM\HasLifecycleCallbacks
+ */
 class Product
 {
 	use TId;
+	use TCreatedAt;
+	use TUpdatedAt;
 
 	/** @ORM\Column(type="string", length=255, nullable=FALSE, unique=false) */
 	private string $name;
 
-	/** @ORM\Column(type="float", length=255, nullable=FALSE, unique=false) */
+	/** @ORM\Column(type="float", nullable=FALSE, unique=false) */
 	private float $value;
 
-	/** @ORM\Column(type="integer", length=255, nullable=TRUE, unique=false) */
+	/** @ORM\Column(type="integer", nullable=TRUE, unique=false) */
 	private int $stock;
 
 

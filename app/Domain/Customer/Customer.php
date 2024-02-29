@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Customer;
 
-use App\Domain\Order\Order;
+use App\Model\Database\Entity\TCreatedAt;
 use App\Model\Database\Entity\TId;
+use App\Model\Database\Entity\TUpdatedAt;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="CustomerRepository")
@@ -16,6 +18,8 @@ use Doctrine\Common\Collections\Collection;
 class Customer
 {
 	use TId;
+	use TCreatedAt;
+	use TUpdatedAt;
 
 	/** @ORM\Column(type="string", length=255, nullable=FALSE, unique=false) */
 	private string $firstName;
@@ -29,18 +33,12 @@ class Customer
 	/** @ORM\Column(type="string", length=255, nullable=FALSE, unique=TRUE) */
 	private string $telephone;
 
-	/**
-	 * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="customer")
-	 */
-	private $orders;
-
 	public function __construct(string $firstName, string $lastName, string $email, string $telephone)
 	{
 		$this->firstName = $firstName;
 		$this->lastName = $lastName;
 		$this->email = $email;
 		$this->telephone = $telephone;
-		$this->orders = new ArrayCollection();
 	}
 
 	public function getFirstName(): string
@@ -94,23 +92,5 @@ class Customer
 	public function setTelephone(string $telephone): void
 	{
 		$this->telephone = $telephone;
-	}
-
-	/**
-	 * @return Collection<int, Order>
-	 */
-	public function getOrders(): Collection
-	{
-		return $this->orders;
-	}
-
-	public function addOrder(Order $order): self
-	{
-		if (!$this->orders->contains($order)) {
-			$this->orders[] = $order;
-			$order->setCustomer($this);
-		}
-
-		return $this;
 	}
 }

@@ -114,16 +114,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
-      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
-      <path value="$PROJECT_DIR$/vendor/symfony/config" />
-      <path value="$PROJECT_DIR$/vendor/robmorgan/phinx" />
-      <path value="$PROJECT_DIR$/vendor/league/container" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/database" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/core" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/utility" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/chronos" />
-      <path value="$PROJECT_DIR$/vendor/cakephp/datasource" />
       <path value="$PROJECT_DIR$/vendor/dibi/dibi" />
     </include_path>
   </component>
